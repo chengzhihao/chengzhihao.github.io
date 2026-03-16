@@ -165,13 +165,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -188,6 +188,106 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/16/qt6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chengzhihao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/16/qt6%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">qt6 新特性</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-03-16 10:26:10 / Modified: 10:39:16" itemprop="dateCreated datePublished" datetime="2026-03-16T10:26:10+08:00">2026-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/qt-%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">qt 框架</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="qt6的新特性"><a href="#qt6的新特性" class="headerlink" title="qt6的新特性"></a>qt6的新特性</h2><h3 id="qt-版本历史"><a href="#qt-版本历史" class="headerlink" title="qt 版本历史"></a>qt 版本历史</h3><ul>
+<li>**Qt 1 系列 (1995-1998)**：这是Qt的起步阶段。首个公开版本于1995年发布，并在1996年随着KDE项目的采用，逐渐在Linux社区获得关注。</li>
+<li>**Qt 2 系列 (1999-2001)**：Qt开始真正跨平台，发布了支持Windows的版本，并引入了QPL许可证。</li>
+<li>**Qt 3 系列 (2001-2004)**：功能更加强大和成熟，增加了对Mac OS X的支持，进一步巩固了其跨平台能力。</li>
+<li><strong>Qt 4 系列 (2005-2015)：这是一个里程碑式的版本，对框架进行了重大革新，引入了模型&#x2F;视图架构</strong>、<strong>QGraphicsView框架</strong>等强大功能。更重要的是，它在4.7版本中引入了<strong>QML和QtQuick</strong>，为声明式UI开发奠定了基础。这一时期Qt被Nokia收购，后又转至Digia。</li>
+<li><strong>Qt 5 系列 (2012-2020s)：标志着框架开发向开放治理</strong>的转变（<a target="_blank" rel="noopener" href="https://qt-project.org/">qt-project.org</a>）。它全面支持Android和iOS等移动平台，并引入了模块化的架构。此系列中的5.6、5.9、5.12、5.15等多个版本都是长期支持版本（LTS），被广泛用于各类生产环境。</li>
+<li><strong>Qt 6 系列 (2020-至今)：面向未来的版本，适应现代C++标准（C++17），优化了对Vulkan、Metal</strong>等下一代图形接口的支持，并在模块化方面做得更加彻底。其最新LTS版本是<strong>2024年10月发布的Qt 6.8</strong>，提供长达5年的商业支持，是当前开发新项目的首选。</li>
+</ul>
+<h3 id="如何选择Qt版本"><a href="#如何选择Qt版本" class="headerlink" title="如何选择Qt版本"></a>如何选择Qt版本</h3><p>面对众多的版本，你可以根据以下几点来决策：</p>
+<ul>
+<li><strong>新项目首选</strong>：建议直接使用最新的 <strong>Qt 6 LTS 版本</strong>（如 6.8），它功能最新、支持周期最长，适合长期维护。</li>
+<li><strong>维护老项目</strong>：如果你的项目基于Qt 5，可以继续使用对应的 <strong>LTS 版本</strong>（如 5.12 或 5.15），它们依然稳定可靠。</li>
+<li><strong>考虑特殊需求</strong>：</li>
+<li>如果你的应用需要支持 <strong>Windows 7</strong>，请注意 <strong>Qt 5.15 是最后一个支持该系统的版本</strong>。</li>
+<li>对于<strong>嵌入式开发</strong>且对库大小有极致要求，一些开发者仍会选择成熟的 <strong>Qt 4.8.7</strong>。</li>
+</ul>
+<h3 id="Qt6-中哪些重要特性"><a href="#Qt6-中哪些重要特性" class="headerlink" title="Qt6 中哪些重要特性"></a>Qt6 中哪些重要特性</h3><h4 id="从qmake到cmake构建"><a href="#从qmake到cmake构建" class="headerlink" title="从qmake到cmake构建"></a>从qmake到cmake构建</h4><p><img src="/images/qt/VssSUv8eiBsJ7taDAKPQltMStl3KLhQV8v8bcSQ5s7s.png" alt="image"></p>
+<h4 id="Qt-核心模块"><a href="#Qt-核心模块" class="headerlink" title="Qt 核心模块"></a>Qt 核心模块</h4><p><img src="/images/qt/qFTsKtgltnVJ-dtDNkvkpDDV3iwPETNhBIzWWkpStc.png" alt="image"></p>
+<h4 id="Qt-图表模块"><a href="#Qt-图表模块" class="headerlink" title="Qt 图表模块"></a>Qt 图表模块</h4><p><img src="/images/qt/tUF_lS6tym5BQ1HMqlq2D7zz0W6RxdkCwlDEpQXJNGc.png" alt="image"></p>
+<h4 id="Qt-其他模块"><a href="#Qt-其他模块" class="headerlink" title="Qt 其他模块"></a>Qt 其他模块</h4><p><img src="/images/qt/gUcOCwFkl7fm8bymz8bysyS0RmE6oKt4gumpr3WhWZ4.png" alt="image"></p>
+<p>还有其他的一些，可参考 <a target="_blank" rel="noopener" href="https://doc.qt.ac.cn/qt-6/whatsnew67.html">https://doc.qt.ac.cn/qt-6/whatsnew67.html</a> 去看看</p>
+<p>在做新系统开发时， 尽量往新版本上靠， 它提供了一些更加完美的特性， 和更好的适配未来发展需要。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
