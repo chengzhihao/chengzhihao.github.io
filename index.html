@@ -165,7 +165,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -188,6 +188,122 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/16/LLM%E5%88%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chengzhihao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/16/LLM%E5%88%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/" class="post-title-link" itemprop="url">理解AI重要概念</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-03-16 18:42:35 / Modified: 18:47:57" itemprop="dateCreated datePublished" datetime="2026-03-16T18:42:35+08:00">2026-03-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">AI 应用开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="LLM分解任务"><a href="#LLM分解任务" class="headerlink" title="LLM分解任务"></a>LLM分解任务</h2><h3 id="用户发问"><a href="#用户发问" class="headerlink" title="用户发问"></a>用户发问</h3><p>我的提问信息是： “ 采用cli命令行， 每个节点自动后自动发消息给所有在线节点，每个节点上线后，广播自己的在线信息给其他节点，去中心化。 每个节点另外所有节点5分钟没有心跳，即认为下线了，请认真设计一下。”</p>
+<p>看看LLM是如何来分析这个问题的？</p>
+<h3 id="LLM的思考过程"><a href="#LLM的思考过程" class="headerlink" title="LLM的思考过程"></a>LLM的思考过程</h3><p>原始需求：”每个节点启动后自动发消息给所有在线节点，去中心化”</p>
+<p>         ↓ 拆解 ↓</p>
+<p>- 自动发消息 → 需要定时任务</p>
+<p>- 所有在线节点 → 需要知道”谁在线”</p>
+<p>- 去中心化 → 不能有中心服务器</p>
+<p>- 节点上线&#x2F;下线检测 → 需要心跳机制</p>
+<p>- 5分钟无心跳即下线 → 需要超时检测</p>
+<p>LLM 提取信息里的关键信息，而且， 它能够依据上下文， 将 “每个节点自动后”  ， 修改为 “每个节点启动后”， 并反馈给用户。</p>
+<p>然后， LLM 会根据以上信息， 在它模型大脑里， 继续思考和推演过程，直至拿到最终结果。 LLM训练的好坏，决定了结果的正确性。</p>
+<h3 id="LLM与人类比较"><a href="#LLM与人类比较" class="headerlink" title="LLM与人类比较"></a>LLM与人类比较</h3><h4 id="思考程度"><a href="#思考程度" class="headerlink" title="思考程度"></a>思考程度</h4><p>人类是<strong>线性递归</strong>的：<br>- 必须一步一步思考<br>- 但可以随时回溯、修正<br>- 大脑容量有限，一次只能想几件事<br>- <strong>工作记忆限制</strong>：只能同时处理7±2个概念</p>
+<p>LLM是<strong>平行激活</strong>的：<br>- 瞬间”看到”所有相关知识<br>- 没有工作记忆限制<br>- 所有相关信息同时激活<br>- 但可能缺乏深度推理</p>
+<h4 id="成长路径"><a href="#成长路径" class="headerlink" title="成长路径"></a>成长路径</h4><p>人类成长过程</p>
+<ul>
+<li>看书学习、体育运动，社会互动</li>
+<li>行为约束，规范条约，以及社会中所见所闻，所触所想而形成的固有经验</li>
+<li>人类有具备高级情感，是区别于其他一切低级动物最根本的特征</li>
+<li>依据老话 “活到老，学到老”，就明白人的知识储备是有限的， 且知识和经验，是会老化的，所以要时常更新</li>
+</ul>
+<p>LLM成长过程</p>
+<ul>
+<li>喂过一大堆数据，这些数据来源是相关论文摘要、技术博客片段、以及各种论坛和资讯</li>
+<li>不明白经验为何物， 它理解的关键在于文本关联，当然根据模型的各种数据、历史经验，得到的经验可能更客观</li>
+<li>无情感，通过模型反复训练即算法更新，让自己跟人类沟通起来显得那么有“情感”</li>
+</ul>
+<h3 id="Claude-Code-and-Opus-4-5有多牛？"><a href="#Claude-Code-and-Opus-4-5有多牛？" class="headerlink" title="Claude Code and Opus 4.5有多牛？"></a>Claude Code and Opus 4.5有多牛？</h3><h4 id="Top-engineers-at-Anthropic-OpenAI-say-AI-now-writes-100-of-their-code—with-big-implications-for-the-future-of-software-development-jobs"><a href="#Top-engineers-at-Anthropic-OpenAI-say-AI-now-writes-100-of-their-code—with-big-implications-for-the-future-of-software-development-jobs" class="headerlink" title="Top engineers at Anthropic, OpenAI say AI now writes 100% of their code—with big implications for the future of software development jobs"></a>Top engineers at Anthropic, OpenAI say AI now writes 100% of their code—with big implications for the future of software development jobs</h4><p>At Anthropic—an AI lab building some of the world’s most advanced models—engineers are no longer writing the code that powers their products; they’re outsourcing it to AI. The <a target="_blank" rel="noopener" href="https://fortune.com/2026/01/24/anthropic-boris-cherny-claude-code-non-coders-software-engineers/">head of Anthropic’s Claude Code, Boris Cherny,</a> has announced he hasn’t written any code in more than two months.</p>
+<p><a target="_blank" rel="noopener" href="https://x.com/bcherny/status/2015979257038831967?s=46&t=zHQCBTtfz3hXdhbfUsgEAg">In a post on</a> <a target="_blank" rel="noopener" href="https://fortune.com/company/twitter/">X</a>, Cherny said 100% of his code is now written by Anthropic’s Claude Code and Opus 4.5. Across the rest of the company, he says “pretty much 100%” of code is also AI-generated.</p>
+<p>“For me personally, it has been 100% for two+ months now, I don’t even make small edits by hand,” Cherny wrote in a post on X responding to AI researcher Andrej Karpathy. “I shipped 22 PRs (pull requests) yesterday and 27 the day before, each one 100% written by Claude.”</p>
+<p>The comments echo earlier remarks by Anthropic CEO Dario Amodei at the World Economic Forum earlier this month, where he noted that some engineers at his company have stopped writing code themselves and instead rely on AI models to generate it while they focus on editing. At Davos, Amodei predicted that the industry may be just six to twelve months away from AI handling most or all of software engineering work from start to finish.</p>
+<p>Cherny isn’t the only prominent engineer to announce they have largely abandoned manual coding. Roon, a popular pseudonymous account on <a target="_blank" rel="noopener" href="https://fortune.com/company/twitter/">X</a> written by an OpenAI researcher, also said in a post on X that he no longer writes any of his own code. “100%, I don’t write code anymore,” the <a target="_blank" rel="noopener" href="https://x.com/tszzl/status/2015262304913469808">user wrote</a> when asked what percentage of his coding is done by AI models. In a separate post, he added: “Programming always sucked. It was a requisite pain for ~everyone who wanted to manipulate computers into doing useful things, and I’m glad it’s over.”</p>
+<p>这段话的意思是： </p>
+<p>在“阿尼普蒂克”这家人工智能实验室（其正在开发一些全球最先进的模型）中，工程师们不再编写驱动其产品的代码；而是将这一工作交由人工智能来完成。阿尼普蒂克公司“Claude Code”项目的负责人鲍里斯·切尔尼宣布，他已经超过两个月没有编写任何代码了。</p>
+<p>在一篇发布于 X 平台的帖子中，切尔尼表示，他目前所有的代码均由安托里普公司的Claude Code和 Opus 4.5 生成。而在公司的其他部门，他表示“几乎 100%”的代码也是由人工智能生成的。</p>
+<p>切尔尼在推特上的一篇帖子中这样写道：“就我个人而言，这种情况已经持续了两个多月了，我甚至都不再手动进行小的修改了。”他是在回应人工智能研究者安德烈·卡帕西时发表上述言论的。“昨天我提交了 22 个 PR（拉取请求），前天又提交了 27 个，每一项都是由克劳德完全完成的。”</p>
+<p>这些评论与安托普里公司首席执行官达里奥·阿莫埃伊本月早些时候在世界经济论坛上发表的言论相呼应。当时他指出，该公司的一些工程师已经不再自己编写代码，而是依靠人工智能模型来生成代码，而他们则专注于编辑工作。在达沃斯会议上，阿莫埃伊预测，该行业可能在六到十二个月内就能实现人工智能全面接管软件工程的所有环节。</p>
+<p>切尔尼并非是唯一一位宣布已基本放弃手动编程的知名工程师。在 X 平台上一个颇受欢迎的匿名账号“Roon”（由一位 OpenAI 研究人员所写）也曾在 X 上发文称，自己不再编写任何个人代码了。“百分之百，我不再写代码了，”当被问及自己编码工作有多少是由 AI 模型完成时，该用户写道。在另一篇帖子中，他还补充道：“编程一直都很糟糕。对于想要让计算机完成有用任务的每个人来说，它都是必要的痛苦经历，我很高兴它已经结束了。”</p>
+<h3 id="程序员该咋办"><a href="#程序员该咋办" class="headerlink" title="程序员该咋办"></a>程序员该咋办</h3><p>AI确实很好， 但对于指挥AI来整体完成全套软件开发的个体“总工” 要求也非常高，一般人达不到， 所以，未来这方面的人才需求量只增不减，程序员应该跟随潮流，把这些工具先应用起来， 未来要“总工“， 也仍然需要 AI时代的“搬运工”。不跟随时代学习AI技术的程序员， 是真的会被淘汰的， 绝不危言耸听。 建议可以去使用目前爆火的AI编程工具， 你就会亲身感受到的。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
