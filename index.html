@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -190,6 +190,203 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/18/AI%E5%BC%80%E5%8F%91%E7%9A%84%E5%85%B3%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chengzhihao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/18/AI%E5%BC%80%E5%8F%91%E7%9A%84%E5%85%B3%E9%94%AE/" class="post-title-link" itemprop="url">小便签开发</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-03-18 21:54:52" itemprop="dateCreated datePublished" datetime="2026-03-18T21:54:52+08:00">2026-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-03-19 12:31:28" itemprop="dateModified" datetime="2026-03-19T12:31:28+08:00">2026-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">AI 应用开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="源于何要做"><a href="#源于何要做" class="headerlink" title="源于何要做"></a>源于何要做</h3><p>看到头条上，天天推什么<strong>claude</strong>,  <strong>opencode</strong>, <strong>trae</strong>,<strong>cursor</strong>  等等，说有多牛多牛， 忍不住就想试试，所以， 说干就干了。 看到某个示例里简单说了便签的应用， 我也试试看吧。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>vscode 编辑器里配合 cline 插件联合使用</p>
+<h3 id="先给需求"><a href="#先给需求" class="headerlink" title="先给需求"></a>先给需求</h3><p>本工程是一个待办事项的说明。</p>
+<p>要求桌面端待办事项,程序, 要求如下:</p>
+<ol>
+<li><p>以小卡片的方式层叠堆放, 里面有详细时间计划 , 该计划明确了特定时间段该做的事务</p>
+</li>
+<li><p>支持随意拖动该卡片</p>
+</li>
+<li><p>具备添加待办事项, 修改 和删除等维护操作, 有条件的化, 能尽量让小界面稍微美观点</p>
+</li>
+<li><p>支持数据持久化, 系统启动后, 自动在桌面上展示待办事项</p>
+</li>
+<li><p>要求架构简单</p>
+</li>
+</ol>
+<h3 id="AI-的交互过程"><a href="#AI-的交互过程" class="headerlink" title="AI 的交互过程"></a>AI 的交互过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 开发沟通记录</span><br><span class="line"></span><br><span class="line">本文档记录了桌面待办事项应用开发过程中的沟通历程和应答思路。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">## 一、初始需求阶段</span><br><span class="line"></span><br><span class="line">### 用户需求</span><br><span class="line"></span><br><span class="line">要求桌面端待办事项程序，要求如下：</span><br><span class="line">1) 以小卡片的方式层叠堆放，里面有详细时间计划，该计划明确了特定时间段该做的事务</span><br><span class="line">2) 支持随意拖动该卡片</span><br><span class="line">3) 具备添加待办事项、修改和删除等维护操作，有条件的话，能尽量让小界面稍微美观点</span><br><span class="line">4) 支持数据持久化，系统启动后，自动在桌面上展示待办事项</span><br><span class="line">5) 要求架构简单</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">### 应答思路</span><br><span class="line"></span><br><span class="line">1. **技术选型分析**</span><br><span class="line">   - 桌面应用可选方案：Electron、Tauri、Qt、WPF</span><br><span class="line">   - 考虑&quot;架构简单&quot;要求，选择 Electron + 原生 HTML/CSS/JS</span><br><span class="line">   - 无需框架，降低复杂度</span><br><span class="line"></span><br><span class="line">2. **功能拆解**</span><br><span class="line">   - 卡片展示 → CSS 布局 + 动画</span><br><span class="line">   - 拖动卡片 → 拖拽 API 或手动实现</span><br><span class="line">   - CRUD 操作 → 弹窗表单</span><br><span class="line">   - 数据持久化 → localStorage / JSON 文件</span><br><span class="line"></span><br><span class="line">3. **架构设计**</span><br><span class="line"></span><br><span class="line">   主进程 (main.js)     → 窗口管理、文件操作</span><br><span class="line">   预加载 (preload.js)  → 安全桥接</span><br><span class="line">   渲染进程             → UI 交互</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 二、界面优化阶段</span><br><span class="line"></span><br><span class="line">### 需求变更 1：添加按钮位置</span><br><span class="line"></span><br><span class="line">**用户反馈**：添加按钮和编辑删除按钮放一起</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 原设计：右下角浮动按钮</span><br><span class="line">- 新设计：将添加按钮集成到卡片操作区</span><br><span class="line">- 优点：操作集中，界面更简洁</span><br><span class="line"></span><br><span class="line">**实现方案**：</span><br><span class="line">- 在每个卡片的 `.card-actions` 区域添加 `+` 按钮</span><br><span class="line">- 点击触发新增窗口</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 需求变更 2：悬停显示</span><br><span class="line"></span><br><span class="line">**用户反馈**：悬停显示背景和标题栏</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 默认状态：透明背景，隐藏标题栏</span><br><span class="line">- 悬停状态：显示背景色和关闭按钮</span><br><span class="line">- 实现方式：CSS `:hover` 伪类 + `opacity` 过渡</span><br><span class="line"></span><br><span class="line">**实现代码**：</span><br><span class="line"></span><br><span class="line">body &#123;</span><br><span class="line">  background: transparent;</span><br><span class="line">  transition: all 0.3s ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body:hover &#123;</span><br><span class="line">  background: rgba(40, 40, 50, 0.85);</span><br><span class="line">  backdrop-filter: blur(20px);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 需求变更 3：界面大小</span><br><span class="line"></span><br><span class="line">**用户反馈**：界面大小显示两个便签</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 调整窗口高度为两个便签的高度</span><br><span class="line">- 便签高度约 120px，窗口高度设为 320px</span><br><span class="line">- 为后续滚动功能预留空间</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 需求变更 4：新增窗口</span><br><span class="line"></span><br><span class="line">**用户反馈**：新增便签使用弹出窗口</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 原设计：模态框弹窗</span><br><span class="line">- 新设计：独立 BrowserWindow</span><br><span class="line">- 优点：更符合桌面应用体验，可独立拖动</span><br><span class="line"></span><br><span class="line">**实现方案**：</span><br><span class="line">1. 创建 `add.html` 和 `add.js`</span><br><span class="line">2. 主进程添加 `openAddWindow` API</span><br><span class="line">3. 使用 IPC 通信传递数据</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 需求变更 5：删除浮动按钮</span><br><span class="line"></span><br><span class="line">**用户反馈**：底下那个最大的添加便签的按钮可以删除了</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 每个卡片已有添加按钮，浮动按钮冗余</span><br><span class="line">- 删除 HTML 元素、CSS 样式、JS 事件监听</span><br><span class="line">- 更新空状态提示文字</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 需求变更 6：颜色优化</span><br><span class="line"></span><br><span class="line">**用户反馈**：整体的颜色搭配下，感觉便签整个黄色也有点不协调</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- 提供多个方案供用户选择</span><br><span class="line">- 方案一：柔和米黄/奶油色 ✓</span><br><span class="line">- 方案二：淡雅白色系</span><br><span class="line">- 方案三：淡彩色系</span><br><span class="line">- 方案四：渐变彩色</span><br><span class="line"></span><br><span class="line">**最终选择**：方案一 - 柔和米黄/奶油色</span><br><span class="line">- 背景色：`rgba(255, 250, 235, 0.92)`</span><br><span class="line">- 顶部边条：淡金色渐变</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">## 三、核心功能阶段</span><br><span class="line"></span><br><span class="line">### 需求变更 7：老虎机滚动</span><br><span class="line"></span><br><span class="line">**用户反馈**：</span><br><span class="line"></span><br><span class="line">界面大小最多显示两个便签，多余的便签要跟老虎机的那样模式一样，</span><br><span class="line">鼠标滚轮前滚后滚，同时也滚动便签向前或向后</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line"></span><br><span class="line">1. **效果分析**</span><br><span class="line">   - 老虎机特点：固定显示区域、平滑滚动、边缘渐变</span><br><span class="line">   - 每次滚动一个卡片高度</span><br><span class="line">   - 需要边界检查</span><br><span class="line"></span><br><span class="line">2. **实现方案**</span><br><span class="line">   - CSS：固定容器高度，添加渐变遮罩</span><br><span class="line">   - JS：监听滚轮事件，计算偏移量，应用 transform</span><br><span class="line"></span><br><span class="line">3. **关键技术点**</span><br><span class="line">   </span><br><span class="line">   // 滚轮事件</span><br><span class="line">   cardsContainer.addEventListener(&#x27;wheel&#x27;, handleWheelScroll, &#123; passive: false &#125;);</span><br><span class="line">   </span><br><span class="line">   // 计算偏移</span><br><span class="line">   const newOffset = scrollOffset + (direction * cardHeight);</span><br><span class="line">   </span><br><span class="line">   // 应用变换</span><br><span class="line">   cardsWrapper.style.transform = `translateY(-$&#123;scrollOffset&#125;px)`;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">4. **视觉增强**</span><br><span class="line">   - 顶部/底部渐变遮罩</span><br><span class="line">   - 悬停时显示遮罩</span><br><span class="line">   - 平滑过渡动画</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">## 四、文档编写阶段</span><br><span class="line"></span><br><span class="line">**用户需求**：</span><br><span class="line">1. 整理沟通过程成 md 文档，附带应答思路</span><br><span class="line">2. 编写 README.md，涉及开发环境安装部署、发布等</span><br><span class="line">3. 提供从需求到设计的过程化文档（4个文档）</span><br><span class="line"></span><br><span class="line">**应答思路**：</span><br><span class="line">- DEVELOPMENT_LOG.md：本文档</span><br><span class="line">- README.md：项目说明</span><br><span class="line">- docs/需求分析.md：需求拆解</span><br><span class="line">- docs/架构设计.md：技术架构</span><br><span class="line">- docs/详细设计.md：界面和交互设计</span><br><span class="line">- docs/开发日志.md：开发过程记录</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">## 五、总结</span><br><span class="line"></span><br><span class="line">### 开发迭代过程</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">需求分析 → 技术选型 → 基础实现 → 界面优化 → 功能完善 → 文档编写</span><br><span class="line">    ↓           ↓           ↓           ↓           ↓           ↓</span><br><span class="line">  功能清单    Electron    卡片展示    悬停效果    老虎机滚动   README</span><br><span class="line">             原生JS      CRUD操作    颜色优化    边界处理    设计文档</span><br><span class="line">             </span><br><span class="line"></span><br><span class="line">### 关键决策</span><br><span class="line"></span><br><span class="line">| 决策点 | 选择 | 理由 |</span><br><span class="line">|--------|------|------|</span><br><span class="line">| 技术栈 | Electron + 原生JS | 架构简单，无需框架 |</span><br><span class="line">| 数据存储 | JSON 文件 | 轻量级，易读写 |</span><br><span class="line">| 新增方式 | 独立窗口 | 桌面应用体验 |</span><br><span class="line">| 滚动方式 | transform | 性能好，动画流畅 |</span><br><span class="line">| 默认颜色 | 奶油色 | 柔和不刺眼 |</span><br><span class="line"></span><br><span class="line">### 经验总结</span><br><span class="line"></span><br><span class="line">1. **需求沟通很重要** - 及时确认用户意图，避免返工</span><br><span class="line">2. **提供多个方案** - 让用户有选择权，提高满意度</span><br><span class="line">3. **渐进式开发** - 先实现核心功能，再优化细节</span><br><span class="line">4. **保持架构简单** - 符合用户&quot;架构简单&quot;的原始需求</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="开发过程评价"><a href="#开发过程评价" class="headerlink" title="开发过程评价"></a>开发过程评价</h3><ol>
+<li><strong>能够先分析， 然后给出技术选型</strong>， 这点很赞， 但是不是适合你要的选型， 自己心里要有数；</li>
+<li><strong>中间在需求沟通上</strong>，存在很多问题， 这里它没有列出来， 其实并没有达到预期要求，但是中间的沟通过程还是挺好的， 切换到 plan 模式，跟它沟通，虽然多次后，仍然没有达到预期效果， 但总归是做出来了， 虽然效果有点偏差;</li>
+<li><strong>对于提的需求,没有一行行的拆分并细致理解</strong>, 这个点很重要，而且应该在理解后，跟用户问询确认，并得到反馈，确定是否要去 act 模式，执行后续动作;</li>
+</ol>
+<h3 id="总体评价"><a href="#总体评价" class="headerlink" title="总体评价"></a>总体评价</h3><p>给定一些小需求, 它就给你把代码组织, 技术选型, 细节模块部分全部给你生成出来,  还是很不错的, 大体上把握的不错, 但细节部分还的要好好打磨, 尤其是细节问题这块,沟通成本很高,需要反复沟通才达到了效果.<br>也许, 上面最前面提到的那些才是真正的适合开发的,  但不管是什么好东西吧, 最终的输入, 在于你的思维, 你是怎么考虑的, 又给了AI什么输入, AI 只是辅助工具。 对于那些商业化工业级或定制化要求比较高的产品， AI全自动代码生成很不切实际, 也不好维护。</p>
+<p>​	<strong>建议</strong> 在系统初步沟通需求的过程种，前期一定要沟通好需求并确定技术选型， 大体的系统架构和框架出来后， 要反复论证是否满足系统需要。  而且对于一个大系统来说， 前期不能要求AI做到细节功能， 而应该是仅仅有个可运行的程序，并且规划的各个子系统或模块要能够跑通， 后面才是使用AI对各个模块细节打磨，写局部细节代码的过程了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2026/03/18/opencode%E5%88%9D%E5%B0%9D%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chengzhihao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/03/18/opencode%E5%88%9D%E5%B0%9D%E8%AF%95/" class="post-title-link" itemprop="url">opencode 初尝试</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2026-03-18 12:02:22 / Modified: 12:04:22" itemprop="dateCreated datePublished" datetime="2026-03-18T12:02:22+08:00">2026-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
